@@ -4,4 +4,5 @@ RUN dnf install -y java-17-openjdk
 LABEL description="Deliberately vulnerable log4j. Do not use."
 ARG JAR_FILE=target/*.war
 COPY ${JAR_FILE} app.war
+LABEL test=true
 ENTRYPOINT ["java","-jar","/app.war"]

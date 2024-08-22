@@ -1,0 +1,5 @@
+FROM redhat/ubi8-micro
+LABEL description="cleaner log4j"
+ARG JAR_FILE=target/*.war
+COPY ${JAR_FILE} app.war
+ENTRYPOINT ["java","-jar","/app.war"]

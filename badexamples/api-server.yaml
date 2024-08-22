@@ -22,7 +22,7 @@ spec:
           allowPrivilegeEscalation: false
           readonlyRootFilesystem: true
           capabilities:
-            add: SYS_ADMIN
+            add: ["SYS_ADMIN"]
         env:
         - name: DB_PASSWORD_SECRET
           value: "SECRET"

@@ -1,0 +1,8 @@
+FROM redhat/ubi8-minimal
+LABEL description="Deliberately vulnerable log4j. Do not use."
+RUN microdnf update -y
+RUN microdnf install -y java-17-openjdk
+RUN rpm -e --nodeps $(rpm -qa '*rpm*' '*dnf*' '*libsolv*' '*hawkey*' 'yum*')
+ARG JAR_FILE=target/*.war
+COPY ${JAR_FILE} app.war
+ENTRYPOINT ["java","-jar","/app.war"]

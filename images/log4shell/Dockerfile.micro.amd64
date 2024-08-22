@@ -1,6 +1,4 @@
-FROM redhat/ubi8
-RUN dnf update -y
-RUN dnf install -y java-17-openjdk
+FROM redhat/ubi8-micro
 LABEL description="Deliberately vulnerable log4j. Do not use."
 ARG JAR_FILE=target/*.war
 COPY ${JAR_FILE} app.war
